@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: serif;
+        }
+        body{
+            width: 100%;
+            height: 100%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+            margin-top: 50px;
+            gap: 40px;
+        }
+        h1{
+            color: #113232;
+        }
+    </style>
+</head>
+<body>
+    <h1>Generate random number between [0,1) </h1>
+    <h2 id="first"></h2>
+    <button type="submit" id="firstbtn">Click me</button>
+    <h1>Generate random number between [1,10] </h1>
+    <h2 id="second"></h2>
+    <button type="submit" id="secondbtn">Click me</button>
+
+    <script>
+     document.getElementById("firstbtn").addEventListener('click',()=>{
+        document.getElementById("first").innerHTML=Math.random();
+     })
+
+     document.getElementById("secondbtn").addEventListener('click',()=>{
+        document.getElementById("second").innerHTML=Math.floor(Math.random()*10)+1;
+     })
+    </script>
+</body>
+</html>

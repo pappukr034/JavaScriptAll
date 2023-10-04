@@ -1,0 +1,23 @@
+body{
+    background-color: #313030;
+    color: whitesmoke;
+}
+.container{
+    margin-left: 40px;
+}
+.inputbar{
+    width: 50vw;
+    height: 40px;
+    border: none;
+    padding-left: 10px;
+}
+.guessSubmit{
+    width: 160px;
+    height: 40px;
+    font-size: larger;
+    margin-top: 20px;
+    color: whitesmoke;
+    border-radius: 10px;
+    border: none;
+    background-image: linear-gradient(to right, rgb(221, 72, 72), blue);
+}

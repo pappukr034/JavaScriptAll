@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Unlimited Color Project</title>
+    <style>
+        body{
+            background-color: #180a0a;
+            color: whitesmoke;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            padding: 20px 0;
+        }
+        .btn{
+            width: 100px;
+            height: 40px;
+            padding: 10px;
+            font-size: 23px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        div{
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 20px;
+        }
+    </style>
+</head>
+<body id="body">
+    <h1 id="heading">Click Start Button to change backGround Color contineously after 1sec & click stop button for stop</h1>
+   <div>
+    <button id="start" class="btn">Start</button>
+    <button id="stop" class="btn">Stop</button>
+   </div>
+   <script>
+
+    const randomColorGenerator=()=>{
+        let hexNumber="0123456789ABCDEF";
+        let hexColor="#";
+        for(let i=0;i<6;i++){
+            hexColor+=hexNumber[Math.floor(Math.random()*16)];
+        }
+        return hexColor;
+    };
+
+        let setInId=false;
+        document.querySelector('#start').addEventListener('click',()=>{
+             if(!setInId){
+                setInId=setInterval(() => {
+                document.body.style.backgroundColor=randomColorGenerator();
+            }, 1000);
+             }
+        });
+
+
+        document.querySelector('#stop').addEventListener('click',()=>{
+              clearInterval(setInId);
+              setInId=flase;
+        })
+   </script>
+</body>
+</html>

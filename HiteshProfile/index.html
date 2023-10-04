@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hitsh : Profile</title>
+    <style>
+        body{
+            background-color: #303030;
+            color: #f5f5f5;
+        }
+        .profile{
+            background-color: #252323;
+            width: 30vw;
+            height: 70vh;
+            border-radius: 20px;
+            margin: auto;
+            margin-top: 12px;
+        }
+        #inner{
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+            padding: 10px;
+        }
+        .viewProfile{
+            width: 100%;
+            height: 40px;
+            padding: 15px;
+            font-size: 23px;
+            font-weight: 500;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin-top: 15px;
+            border-radius: 10px;
+            border: none;
+            background: linear-gradient(to right,pink,blue);
+            border: 1px solid whitesmoke;
+        }
+    </style>
+</head>
+<body>
+    <div class="profile" id="outer">
+          <div id="inner">
+            <div class="profileLogo">
+                
+            </div>
+            <div>
+            <button class="viewProfile">view profile</button>
+            </div>
+            <div class="followers">Followers <span class="numberOfFollowers"></span> </div>
+          </div>
+    </div>
+    <script>
+        const viewBtn=document.querySelector('.viewProfile');
+        viewBtn.addEventListener('click',()=>{
+            window.location.href='https://github.com/hiteshchoudhary'
+        })
+
+
+        const requestUrl = 'https://api.github.com/users/hiteshchoudhary'
+         const xhr = new XMLHttpRequest();
+         xhr.open('GET', requestUrl)
+         let userName,profileLogoURL,numberOfFollowers;
+         xhr.onreadystatechange = function(){
+        //console.log(xhr.readyState);
+        if (xhr.readyState === 4) {
+            const data = JSON.parse(this.responseText)
+            console.log(data);
+            userName=data.name;
+           profileLogoURL=data.avatar_url;
+           numberOfFollowers=data.followers;
+           const plogo=document.querySelector('.profileLogo');
+           const imgTag=document.createElement('img');
+           imgTag.setAttribute('src',profileLogoURL);
+           console.log(imgTag);
+           plogo.appendChild(imgTag);
+           imgTag.style.borderRadius='50%'
+           imgTag.style.width='250px';
+           imgTag.style.borderWidth='3px'
+           imgTag.style.borderColor='whitesmoke'
+           imgTag.style.borderStyle='solid'
+           const nameField=document.createElement('p');
+           nameField.innerHTML=userName;
+           plogo.appendChild(nameField);
+           nameField.style.fontSize='24px'
+           nameField.style.display='flex'
+           nameField.style.justifyContent='center'
+           nameField.style.alignItems='center'
+           
+          document.querySelector('.numberOfFollowers').innerHTML=numberOfFollowers;
+          const followersEle=document.querySelector('.followers');
+          followersEle.style.fontSize='23px'
+          followersEle.style.margin='23px'
+          followersEle.style.fontSize='23px'
+
+        }
+    }
+       xhr.send();
+
+    </script>
+</body>
+</html>

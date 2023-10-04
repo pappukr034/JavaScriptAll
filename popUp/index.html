@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+    <style>
+        body{
+            width: 100%;
+            height: 100vh;
+            display: flex;
+           justify-content: center;
+           flex-direction: column;
+           align-items: center;
+           overflow-x: hidden;
+           background: rgb(2,0,36);
+background: linear-gradient(90deg, rgba(2,0,36,1) 0%, rgba(121,120,9,1) 35%, rgba(0,212,255,1) 100%);
+        }
+        button{
+            width: 150px;
+            height: 40px;
+            padding: 10px;
+            border: 1px solid #e09a18;
+            border-radius: 20px;
+            font-size: 20px;
+            background-color: #f1c26b;
+            color: aliceblue;
+           
+        }
+        .message{
+            width: 300px;
+            height: 360px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            background-color: azure;
+            border-radius: 13px;
+            position: relative;
+            text-align: center;
+
+            
+        }
+        #check{
+            position: absolute;
+            top: -22px;
+            left: 43%;
+            background-color: #ef9e07;
+            color: #f0f8ff;
+            font-size: 30px;
+            border-radius: 50%;
+            width: 60px;
+            height: 60px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        h2{
+            font-size: 35px;
+            margin-top: 60px;
+            text-align: center;
+        }
+        p{
+            text-align: center;
+            margin-top: -20px;
+        }
+        .message button{
+            margin-top: 80px;
+            border-radius: 6px;
+            width: 200px;
+
+        }
+    </style>
+</head>
+<body>
+    <button type="submit" id="submitbtn">Submit</button>
+    <div class="message">
+        <i id="check" class="fa-solid fa-check"></i>
+        <h2>Thank You</h2>
+        <p>Your details has been successfully submitted.Thanks!</p>
+        <button class="btn">OK</button>
+    </div>
+
+    <script>
+        const btn=document.querySelector("#submitbtn");
+        const popUpOKbtn=document.querySelector(".btn");
+        const messageContainer=document.querySelector(".message");
+        messageContainer.style.display="none";
+        btn.addEventListener("click",()=>{
+            messageContainer.style.display="block";
+            btn.style.display="none";
+        })
+
+        popUpOKbtn.addEventListener("click",()=>{
+            messageContainer.style.display="none";
+            btn.style.display="block";
+        })
+    </script>
+</body>
+</html>

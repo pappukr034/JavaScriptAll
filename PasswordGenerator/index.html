@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Password Generator</title>
+    <style>
+        *{
+            padding: 0;
+            margin: 0;
+        }
+        body{
+            background-color: #7005d3;
+            padding: 200px 100px;
+        }
+
+        h1{
+            color: whitesmoke;
+        }
+        h1 span{
+            color: #fe068a;
+            border-bottom: 4px solid #fe068a ;
+        }
+        input{
+            width: 600px;
+            margin-top: 40px;
+            height: 60px;
+            padding-left: 25px;
+            padding: 4px;
+            outline: none;
+            font-size: x-large;
+        }
+        .ic{
+            position: relative;
+        }
+        .ic img{
+            position: absolute;
+            left: 520px;
+            top: 54px;
+        }
+        button{
+            width: 200px;
+            height: 40px;
+            background-color: #c895f7;
+            color: whitesmoke;
+            margin-top: 20px;
+            font-size: 20px;
+            font-weight: bold;
+            outline: none;
+            border: none;
+            border-radius: 10px;
+            box-shadow: 1px 2px 2px orangered;
+        }
+        button:hover{
+            border: 1px solid blue;
+            background-color: #9551d5;
+            transition: ease-in 300ms;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Generate a <br> <span>Random password</span>
+        </h1>
+       <div class="ic">
+        <input type="text" id="password" placeholder="Password">
+        <img onclick="copyPassword()" src="https://www.bwillcreative.com/wp-content/uploads/2022/09/how-to-copy-and-paste-in-canva-THUMBNAIL.jpg" width="80px" alt="">
+       </div>
+       <button id="btn" onclick="generatePassword()">Generate password</button>
+    </div>
+
+
+
+    <script>
+        const btn=document.getElementById("btn");
+        const inputField=document.getElementById("password");
+
+        const upper="ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+        const lower="abcdefghijklmnopqrstuvwxyz";
+        const number="1234567890";
+        const special="@#$%&";
+
+      
+        function generatePassword(){
+            let password="p";
+            let allchar=upper+lower+number+special;
+            for(let i=0;i<11;i++){
+                password+=allchar[Math.floor(Math.random()*allchar.length)];
+            }
+            inputField.value= password
+        };
+
+        function copyPassword(){
+            inputField.select();
+            document.execCommand("copy");
+        }
+        
+      
+            
+    </script>
+</body>
+</html>

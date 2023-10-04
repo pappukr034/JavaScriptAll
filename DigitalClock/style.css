@@ -1,0 +1,22 @@
+body{
+    width: 100vw;
+    height: auto;
+}
+.container{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    gap: 4px;
+    margin-top: 270px;
+}
+.clock{
+    width: 190px;
+    height: 40px;
+    background-color: #f6490a;
+    color: whitesmoke;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: xx-large;
+}

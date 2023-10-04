@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1 id="heading">Welcome to the My best JS Series</h1>
+    <button id="stop">Stop</button>
+    <button id="start">Start</button>
+    <script>
+        // const changeHeading=()=>{
+        //    document.querySelector('#heading').innerHTML='Heading Changed !';
+        // }
+        // const changeId=setTimeout(changeHeading,2000);
+        // document.querySelector('#stop').addEventListener('click',()=>{
+        //     clearTimeout(changeId);
+        //    document.querySelector('#heading').innerHTML='Heading Not Changed !';
+
+        // })
+
+
+         const intervalId=setInterval((str) => {
+            console.log(str,Date.now());
+         }, 1000,"Hi,");
+
+         document.querySelector('#stop').addEventListener('click',()=>{
+            clearInterval(intervalId);
+         })
+
+         document.querySelector('#start').addEventListener('click',()=>{
+            setInterval((str) => {
+            console.log(str,Date.now());
+         }, 1000,"Hi,");
+         })
+
+    </script>
+</body>
+</html>
