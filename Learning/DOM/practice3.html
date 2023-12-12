@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Practice 3 : DOM</title>
+    <style>
+     *{
+        padding: 0;
+        margin: 0;
+        box-sizing: border-box;
+     }
+     body{
+        width: 100%;
+        height: auto;
+        background-color: #363636;
+        color: whitesmoke;
+     }
+     .main{
+        width: 100%;
+        height: auto;
+        display: flex;
+        justify-content: space-evenly;
+        flex-direction: row;
+        align-items: center;
+        margin-top: 100px;
+        gap: 12px;
+     }
+     .planBody{
+        width: 40%;
+        height: auto;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+        border: 1px solid rgb(70, 69, 69);
+     }
+     .proPlan{
+        background-color: #494949;
+        width: 100%;
+        text-align: center;
+        font-size: 23px;
+        padding: 10px;
+        border-bottom: 1px solid gray;
+     }
+     .liHeading{
+        margin-top: 18px;
+     }
+     ul{
+        list-style: none;
+        padding: 16px 0px;
+        line-height: 1.8;
+        color: aliceblue;
+     }
+     button{
+        width: 70%;
+        height: 50px;
+        border: none;
+        outline: none;
+        border: 2px solid #5b5bff;
+        color: #6060f7;
+        font-size: 23px;
+        font-weight: 400;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        padding: 12px;
+        background-color: #f2f2f2;
+        border-radius: 5px;
+     }
+     .payMethod{
+        text-align: center;
+        margin-top: 50px;
+        font-size: 30px;
+     }
+    </style>
+</head>
+<body>
+
+     
+    
+   <div class="main">
+    <div class="planBody">
+        <h2 class="proPlan">Pro</h2>
+        <div>
+            <h2 class="liHeading" id="proPrice"><span>$30 / month</span></h2>
+            <ul id="proPlanUL">
+                <li>100 users included</li>
+                <li id="proStorage">20 GB of storage</li>
+                <li>priority email support</li>
+                <li>help center access</li>
+            </ul>
+        </div>
+        <button type="button"  id="proBtn">Get started</button>
+    </div>
+    <div class="planBody">
+        <h2 class="proPlan">Basic</h2>
+        <div>
+            <h2 class="liHeading basicPrice" id="basicPrice"><span>$10 / month</span></h2>
+            <ul>
+                <li>10 users included</li>
+                <li id="basicStorage">2 GB of storage</li>
+                <li>priority email support</li>
+                <li>priority email support</li>
+                <li>help center access</li>
+            </ul>
+        </div>
+        <button type="button" id="basicBtn">Get started</button>
+    </div>
+   </div>
+
+
+
+    <script>
+    //    Q1
+    const proPlanUL=document.querySelector('#proPlanUL');
+    const newli=document.createElement('li');
+    const textNode=document.createTextNode("24/7 phone support");
+    newli.appendChild(textNode);
+    proPlanUL.lastElementChild.insertAdjacentElement('afterEnd',newli);
+
+    // Q2
+    const main=document.querySelector('.main');
+    main.style.flexDirection='row-reverse';
+
+    // Q3
+    const proBtn=document.querySelector("#proBtn");
+    proBtn.innerHTML="Buy Now";
+    proBtn.style.color="white"
+    proBtn.style.backgroundColor="blue"
+
+    // Q4
+    const proStorage=document.querySelector('#proStorage');
+    proStorage.innerText="25 GB of storage"
+    const basicStorage=document.querySelector('#basicStorage');
+    basicStorage.innerText="3 GB of storage"
+
+    // Q5
+    main.insertAdjacentHTML('beforebegin',`<div class="payMethod">
+    <label for="monthly">Monthly
+        <input type="radio" name="payMonthly" id="monthly" value="Monthly" checked>
+    </label>
+    <label for="annualy">Annualy
+        <input type="radio" name="payMonthly" id="annualy" value="Annualy">
+    </label>
+   </div>`);
+
+   const price={
+    Monthly:{
+        basic:'$20 / month',
+        pro:'$40 / month'
+    },
+    Annualy:{
+        basic:'$60 / year',
+        pro:'$700 / year'
+    }
+   }
+   
+  const proPrice=document.querySelector("#proPrice span");
+  const basicPrice=document.querySelector("#basicPrice span");
+
+  const radioBtns=document.querySelectorAll('input[type="radio"]');
+
+  Array.from(radioBtns).forEach((radio)=>{
+    radio.addEventListener('change',(e)=>{
+        const selection=e.target.value;
+        proPrice.innerText=price[selection].pro;
+        basicPrice.innerText=price[selection].basic;
+    })
+  })
+
+    </script>
+</body>
+</html>

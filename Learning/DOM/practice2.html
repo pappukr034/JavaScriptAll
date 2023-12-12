@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Registartion Form</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body{
+            width: 100%;
+            height: auto;
+            display: flex;
+            justify-content: center;
+            margin: auto;
+           background-color: rgb(47, 47, 47);
+        }
+        form{
+            width: 30%;
+            height: auto;
+            border-radius: 10px;
+            border: 1px solid gray;
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-start;
+            /* align-items: center; */
+            margin-top: 20px;
+            background-color: whitesmoke;
+        }
+        h1{
+            /* margin-top: 10px; */
+            margin-bottom: 20px;
+            text-align: center;
+        }
+        input{
+            width: 100%;
+            height: 30px;
+            padding-left: 5px;
+            font-size: 20px;
+            padding: 15px,0px;
+            color: rgb(52, 51, 51);
+            border-radius: 8px;
+            border: none;
+            outline: none;
+            border-left: 1px solid gray;
+            border-bottom: 1px solid gray;
+        }
+        #registerBtn{
+            background-color: #4a4af9;
+            color: #f5f5f5;
+            width: 100%;
+            height: 30px;
+            padding-left: 5px;
+            font-size: 20px;
+            padding: 15px,0px;
+            border: none;
+            outline: none;
+            border-radius: 8px;
+            cursor: pointer;
+            
+        }
+    </style>
+</head>
+<body>
+    <form action="" id="form">
+        <h1 id="heading">Registration Form</h1>
+        <input type="text" class="inputfield" placeholder="Username" id="username"> <br>
+        <input type="text" class="inputfield" placeholder="Password" id="password"> <br>
+        <input type="text" class="inputfield" placeholder="confirm Password" id="confirmpassword"> <br>
+        <button type="submit" id="registerBtn">Register</button>
+
+    </form>
+
+    <script>
+        const getLabelElement=(textNode,forattri)=>{
+             const label=document.createElement("label");
+             label.for=forattri;
+             label.innerHTML=textNode;
+             label.style.textAlign="left"
+             label.style.padding="12px"
+             label.style.fontSize="18px"
+             label.style.color="black"
+             return label;
+        }
+        const userLabel=getLabelElement("Enter User Name :","username");
+        const passwordLabel=getLabelElement("Enter Password :","password");
+        const ConfirmPasswordLabel=getLabelElement("Enter Confirm Password :","confirmpassword");
+        const username=document.querySelector("#username");
+        const password=document.querySelector("#password");
+        const confirmpassword=document.querySelector("#confirmpassword");
+        
+        const form=document.getElementById("form");
+        form.insertBefore(userLabel,username);
+        form.insertBefore(passwordLabel,password);
+        form.insertBefore(ConfirmPasswordLabel,confirmpassword);
+
+
+        // VALIDDATE username fields
+        username.addEventListener('blur',(e)=>{
+            if(username.value===""){
+                username.insertAdjacentHTML("afterend",`<p id="passError" style="color: red; padding: 10px;">Please enter correct username</p>`)
+            }
+         })
+
+         // Validate password
+         password.addEventListener('blur',(e)=>{
+            if(password.value.length<3){
+                password.insertAdjacentHTML("afterend",`<p id="passError" style="color: red; padding: 10px;">Please enter strong password greater than length 3</p>`)
+            }
+         })
+         // Validate confirm password
+         confirmpassword.addEventListener('blur',(e)=>{
+            if(e.target.value!=password.value){
+                confirmpassword.insertAdjacentHTML("afterend",`<p id="confirmPassError" style="color: red; padding: 10px;">Missmatch password</p>`)
+            }
+         })
+
+         // selct input fileds
+         const inputfield=document.querySelectorAll(".inputfield");
+         // disabled the submit button until user fill the form correctly
+         const registetBtn=document.querySelector("button");
+         registetBtn.setAttribute('disabled','disabled');
+
+         document.getElementById("form").addEventListener('change',(e)=>{
+            const isFormFields=Array.from(inputfield).every(input => input.value);
+            if(isFormFields){
+                registetBtn.removeAttribute('disabled');
+            }
+            else{
+                registetBtn.setAttribute('disabled','disabled');
+            }
+         })
+
+
+         form.addEventListener('submit',(e)=>{
+            e.preventDefault();
+            const alert=document.createElement('div');
+            alert.style.color='green'
+            alert.style.backgroundColor='#94f405'
+            alert.style.paddingBottom='20px'
+         //   setAttribute('id','alertmessage');
+            alert.innerText="User registered successfully!!";
+            heading=document.querySelector('#heading');
+            heading.prepend(alert)
+         })
+
+         
+
+    </script>
+</body>
+</html>
